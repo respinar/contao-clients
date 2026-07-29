@@ -3,7 +3,7 @@
 /*
  * This file is part of Contao Clients.
  *
- * (c) Hamid Peywasti 2024 <hamid@respinar.com>
+ * (c) Hamid Peywasti
  *
  * @license MIT
  */
