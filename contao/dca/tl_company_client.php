@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Contao Clients.
  *
@@ -12,13 +14,13 @@ use Contao\DC_Table;
 
 $GLOBALS['TL_DCA']['tl_company_client'] = [
     'config' => [
-        'dataContainer'    => DC_Table::class,
+        'dataContainer' => DC_Table::class,
         'enableVersioning' => true,
-        'ptable'           => 'tl_company_client_group',
-        'sql'              => [
+        'ptable' => 'tl_company_client_group',
+        'sql' => [
             'keys' => [
-                'id'        => 'primary',
-                'alias'     => 'index',
+                'id' => 'primary',
+                'alias' => 'index',
                 'published' => 'index',
             ],
         ],
@@ -26,11 +28,11 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
 
     'list' => [
         'sorting' => [
-            'mode'         => 4,
-            'fields'       => ['name'],
-            'flag'         => 1,
+            'mode' => 4,
+            'fields' => ['name'],
+            'flag' => 1,
             'headerFields' => ['title', 'alias'],
-            'panelLayout'  => 'filter;sort,search,limit',
+            'panelLayout' => 'filter;sort,search,limit',
         ],
     ],
 
@@ -47,76 +49,76 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
         ],
         'pid' => [
             'foreignKey' => 'tl_company_client_group.title',
-            'sql'        => "int(10) unsigned NOT NULL default 0",
-            'relation'   => ['type' => 'belongsTo', 'load' => 'eager'],
+            'sql' => 'int(10) unsigned NOT NULL default 0',
+            'relation' => ['type' => 'belongsTo', 'load' => 'eager'],
         ],
         'name' => [
-            'search'    => true,
-            'sorting'   => true,
-            'flag'      => 1,
+            'search' => true,
+            'sorting' => true,
+            'flag' => 1,
             'inputType' => 'text',
-            'eval'      => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'eval' => ['mandatory' => true, 'maxlength' => 255, 'tl_class' => 'w50'],
+            'sql' => "varchar(255) NOT NULL default ''",
         ],
         'alias' => [
-            'search'    => true,
+            'search' => true,
             'inputType' => 'text',
-            'eval'      => ['rgxp' => 'alias', 'doNotCopy' => true, 'maxlength' => 128, 'tl_class' => 'w50'],
-            'sql'       => "varchar(128) COLLATE utf8mb4_bin NOT NULL default ''",
+            'eval' => ['rgxp' => 'alias', 'doNotCopy' => true, 'maxlength' => 128, 'tl_class' => 'w50'],
+            'sql' => "varchar(128) COLLATE utf8mb4_bin NOT NULL default ''",
         ],
         'logo' => [
             'inputType' => 'fileTree',
-            'eval'      => ['filesOnly' => true, 'fieldType' => 'radio', 'extensions' => 'jpg,jpeg,png,gif,svg,webp', 'tl_class' => 'clr'],
-            'sql'       => 'binary(16) NULL',
+            'eval' => ['filesOnly' => true, 'fieldType' => 'radio', 'extensions' => 'jpg,jpeg,png,gif,svg,webp', 'tl_class' => 'clr'],
+            'sql' => 'binary(16) NULL',
         ],
         'website' => [
-            'search'    => true,
+            'search' => true,
             'inputType' => 'text',
-            'eval'      => ['rgxp' => 'url', 'maxlength' => 255, 'tl_class' => 'w50'],
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'eval' => ['rgxp' => 'url', 'maxlength' => 255, 'tl_class' => 'w50'],
+            'sql' => "varchar(255) NOT NULL default ''",
         ],
         'description' => [
-            'search'    => true,
+            'search' => true,
             'inputType' => 'textarea',
-            'eval'      => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
-            'sql'       => 'mediumtext NULL',
+            'eval' => ['rte' => 'tinyMCE', 'tl_class' => 'clr'],
+            'sql' => 'mediumtext NULL',
         ],
         'industry' => [
-            'filter'    => true,
-            'search'    => true,
+            'filter' => true,
+            'search' => true,
             'inputType' => 'text',
-            'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'eval' => ['maxlength' => 255, 'tl_class' => 'w50'],
+            'sql' => "varchar(255) NOT NULL default ''",
         ],
         'location' => [
-            'search'    => true,
+            'search' => true,
             'inputType' => 'text',
-            'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
-            'sql'       => "varchar(255) NOT NULL default ''",
+            'eval' => ['maxlength' => 255, 'tl_class' => 'w50'],
+            'sql' => "varchar(255) NOT NULL default ''",
         ],
         'categories' => [
-            'inputType'  => 'picker',
+            'inputType' => 'picker',
             'foreignKey' => 'tl_company_category.title',
-            'eval'       => ['multiple' => true, 'tl_class' => 'clr'],
-            'sql'        => ['type' => 'blob', 'length' => 65535, 'notnull' => false],
-            'relation'   => ['type' => 'hasMany', 'load' => 'lazy'],
+            'eval' => ['multiple' => true, 'tl_class' => 'clr'],
+            'sql' => ['type' => 'blob', 'length' => 65535, 'notnull' => false],
+            'relation' => ['type' => 'hasMany', 'load' => 'lazy'],
         ],
         'published' => [
-            'toggle'    => true,
-            'filter'    => true,
+            'toggle' => true,
+            'filter' => true,
             'inputType' => 'checkbox',
-            'eval'      => ['doNotCopy' => true],
-            'sql'       => "char(1) NOT NULL default ''",
+            'eval' => ['doNotCopy' => true],
+            'sql' => "char(1) NOT NULL default ''",
         ],
         'start' => [
             'inputType' => 'text',
-            'eval'      => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
-            'sql'       => "varchar(10) NOT NULL default ''",
+            'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
+            'sql' => "varchar(10) NOT NULL default ''",
         ],
         'stop' => [
             'inputType' => 'text',
-            'eval'      => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
-            'sql'       => "varchar(10) NOT NULL default ''",
+            'eval' => ['rgxp' => 'datim', 'datepicker' => true, 'tl_class' => 'w50 wizard'],
+            'sql' => "varchar(10) NOT NULL default ''",
         ],
     ],
 ];
