@@ -17,6 +17,7 @@ $GLOBALS['TL_DCA']['tl_company_client_group'] = [
         'enableVersioning' => true,
         'switchToEdit'     => true,
         'ctable'           => ['tl_company_client'],
+        'userRoot'         => 'clients',
         'sql'              => [
             'keys' => [
                 'id' => 'primary',
