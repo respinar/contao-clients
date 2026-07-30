@@ -18,8 +18,8 @@
     },
     "require": {
         "php": "^8.3",
-        "contao/core-bundle": "^5.3",
-        "respinar/contao-company-bundle": "self.version"
+        "contao/core-bundle": "^5.7",
+        "respinar/contao-company": "self.version"
     },
     "require-dev": {
         "contao/manager-plugin": "^2.12"
