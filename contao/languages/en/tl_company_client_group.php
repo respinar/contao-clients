@@ -10,11 +10,13 @@
 
 $GLOBALS['TL_LANG']['tl_company_client_group'] = [
     // Legends
-    'title_legend' => 'Title and alias',
+    'title_legend'       => 'Title and alias',
+    'protected_legend'   => 'Access protection',
 
     // Fields
-    'title' => ['Title', 'Please enter the group title.'],
-    'alias' => ['Alias', 'The alias is a unique reference that can be used instead of the numeric ID.'],
+    'title'      => ['Title', 'Please enter the group title.'],
+    'alias'      => ['Alias', 'The alias is a unique reference that can be used instead of the numeric ID.'],
+    'protected'  => ['Protect group', 'Show clients in this group to certain member groups only.'],
 
     // Operations
     'new'    => ['New group', 'Create a new client group'],
