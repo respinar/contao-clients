@@ -16,6 +16,7 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
         'dataContainer'    => DC_Table::class,
         'enableVersioning' => true,
         'switchToEdit'     => true,
+        'ptable'           => 'tl_company_client_group',
         'sql'              => [
             'keys' => [
                 'id'        => 'primary',
@@ -27,14 +28,11 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
 
     'list' => [
         'sorting' => [
-            'mode'        => 1,
-            'fields'      => ['name'],
-            'flag'        => 1,
-            'panelLayout' => 'filter;sort,search,limit',
-        ],
-        'label' => [
-            'fields' => ['name', 'industry'],
-            'format' => '%s <span style="color:#999;padding-left:3px">[%s]</span>',
+            'mode'         => 4,
+            'fields'       => ['name'],
+            'flag'         => 1,
+            'headerFields' => ['title', 'alias'],
+            'panelLayout'  => 'filter;sort,search,limit',
         ],
         'global_operations' => [
             'all' => [
@@ -84,6 +82,11 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
         'tstamp' => [
             'sql' => 'int(10) unsigned NOT NULL default 0',
         ],
+        'pid' => [
+            'foreignKey' => 'tl_company_client_group.title',
+            'sql'        => "int(10) unsigned NOT NULL default 0",
+            'relation'   => ['type' => 'belongsTo', 'load' => 'eager'],
+        ],
         'name' => [
             'search'    => true,
             'sorting'   => true,
@@ -128,14 +131,13 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
             'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
             'sql'       => "varchar(255) NOT NULL default ''",
         ],
-        'categories' => array
-        (
-            'inputType'               => 'picker',
-            'foreignKey'              => 'tl_company_category.title',
-            'eval'                    => array('multiple'=>true, 'tl_class'=>'clr'),
-            'sql'                     => array('type'=>'blob', 'length'=>65535, 'notnull'=>false),
-            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
-        ),
+        'categories' => [
+            'inputType'  => 'picker',
+            'foreignKey' => 'tl_company_category.title',
+            'eval'       => ['multiple' => true, 'tl_class' => 'clr'],
+            'sql'        => ['type' => 'blob', 'length' => 65535, 'notnull' => false],
+            'relation'   => ['type' => 'hasMany', 'load' => 'lazy'],
+        ],
         'published' => [
             'toggle'    => true,
             'filter'    => true,
