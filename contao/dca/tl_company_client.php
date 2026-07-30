@@ -74,7 +74,7 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
     ],
 
     'palettes' => [
-        'default' => '{title_legend},name,alias;{logo_legend},logo;{details_legend},website,description,industry,location;{publish_legend},published,start,stop',
+        'default' => '{title_legend},name,alias;{logo_legend},logo;{details_legend},website,description,industry,location;{category_legend},categories;{publish_legend},published,start,stop',
     ],
 
     'fields' => [
@@ -128,6 +128,14 @@ $GLOBALS['TL_DCA']['tl_company_client'] = [
             'eval'      => ['maxlength' => 255, 'tl_class' => 'w50'],
             'sql'       => "varchar(255) NOT NULL default ''",
         ],
+        'categories' => array
+        (
+            'inputType'               => 'picker',
+            'foreignKey'              => 'tl_company_category.title',
+            'eval'                    => array('multiple'=>true, 'tl_class'=>'clr'),
+            'sql'                     => array('type'=>'blob', 'length'=>65535, 'notnull'=>false),
+            'relation'                => array('type'=>'hasMany', 'load'=>'lazy')
+        ),
         'published' => [
             'toggle'    => true,
             'filter'    => true,
