@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of Contao Clients.
  *
@@ -24,5 +26,5 @@ $GLOBALS['TL_PERMISSIONS'][] = 'clients';
 /*
  * Models
  */
-$GLOBALS['TL_MODELS']['tl_company_client']       = CompanyClientModel::class;
+$GLOBALS['TL_MODELS']['tl_company_client'] = CompanyClientModel::class;
 $GLOBALS['TL_MODELS']['tl_company_client_group'] = CompanyClientGroupModel::class;
