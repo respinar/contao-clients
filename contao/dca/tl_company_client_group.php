@@ -9,6 +9,7 @@
  */
 
 use Contao\DC_Table;
+use Doctrine\DBAL\Platforms\AbstractMySQLPlatform;
 
 $GLOBALS['TL_DCA']['tl_company_client_group'] = [
     'config' => [
@@ -37,7 +38,12 @@ $GLOBALS['TL_DCA']['tl_company_client_group'] = [
     ],
 
     'palettes' => [
-        'default' => '{title_legend},title,alias;{protected_legend:hide},protected',
+        '__selector__' => ['protected'],
+        'default'      => '{title_legend},title,alias;{protected_legend:hide},protected',
+    ],
+
+    'subpalettes' => [
+        'protected' => 'groups',
     ],
 
     'fields' => [
@@ -66,6 +72,13 @@ $GLOBALS['TL_DCA']['tl_company_client_group'] = [
             'inputType' => 'checkbox',
             'eval'      => ['submitOnChange' => true],
             'sql'       => "char(1) NOT NULL default ''",
+        ],
+        'groups' => [
+            'inputType'  => 'checkbox',
+            'foreignKey' => 'tl_member_group.name',
+            'eval'       => ['mandatory' => true, 'multiple' => true],
+            'sql'        => ['type' => 'blob', 'length' => AbstractMySQLPlatform::LENGTH_LIMIT_BLOB, 'notnull' => false],
+            'relation'   => ['type' => 'hasMany', 'load' => 'lazy'],
         ],
     ],
 ];
