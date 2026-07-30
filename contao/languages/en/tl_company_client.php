@@ -13,9 +13,11 @@ $GLOBALS['TL_LANG']['tl_company_client'] = [
     'title_legend'       => 'Name and alias',
     'logo_legend'        => 'Logo',
     'details_legend'     => 'Details',
+    'category_legend'    => 'Categories',
     'publish_legend'     => 'Publish settings',
 
     // Fields
+    'pid'                => ['Group', 'The client group this client belongs to.'],
     'name'               => ['Name', 'Please enter the client/company name.'],
     'alias'              => ['Alias', 'The alias is a unique reference that can be used instead of the numeric ID.'],
     'logo'               => ['Logo', 'Please select a client logo.'],
@@ -23,6 +25,7 @@ $GLOBALS['TL_LANG']['tl_company_client'] = [
     'description'        => ['Description', 'Please enter a description for this client.'],
     'industry'           => ['Industry', 'Please enter the industry this client operates in.'],
     'location'           => ['Location', 'Please enter the client location.'],
+    'categories'         => ['Categories', 'Please select one or more categories.'],
     'published'          => ['Publish client', 'Make the client visible on the website.'],
     'start'              => ['Show from', 'Do not show the client on the website before this date.'],
     'stop'               => ['Show until', 'Do not show the client on the website after this date.'],
