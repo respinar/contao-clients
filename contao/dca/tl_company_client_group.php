@@ -37,7 +37,7 @@ $GLOBALS['TL_DCA']['tl_company_client_group'] = [
     ],
 
     'palettes' => [
-        'default' => '{title_legend},title,alias',
+        'default' => '{title_legend},title,alias;{protected_legend:hide},protected',
     ],
 
     'fields' => [
@@ -60,6 +60,12 @@ $GLOBALS['TL_DCA']['tl_company_client_group'] = [
             'inputType' => 'text',
             'eval'      => ['rgxp' => 'alias', 'doNotCopy' => true, 'maxlength' => 128, 'tl_class' => 'w50'],
             'sql'       => "varchar(128) COLLATE utf8mb4_bin NOT NULL default ''",
+        ],
+        'protected' => [
+            'filter'    => true,
+            'inputType' => 'checkbox',
+            'eval'      => ['submitOnChange' => true],
+            'sql'       => "char(1) NOT NULL default ''",
         ],
     ],
 ];
