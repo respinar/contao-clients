@@ -18,6 +18,9 @@ $GLOBALS['BE_MOD']['company']['company_clients'] = [
     'tables' => ['tl_company_client_group', 'tl_company_client'],
 ];
 
+// Add permissions
+$GLOBALS['TL_PERMISSIONS'][] = 'clients';
+
 /*
  * Models
  */
