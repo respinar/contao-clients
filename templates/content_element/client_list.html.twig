@@ -1,0 +1,22 @@
+{% extends "@Contao/content_element/_base.html.twig" %}
+{% block content %}
+    {% if clients|default %}
+        <div class="client-list">
+            {% for client in clients %}
+                <div class="client-item">
+                    {% if client.website|default %}
+                        <a href="{{ client.website }}" target="_blank" rel="noopener noreferrer" title="{{ client.name }}">
+                    {% endif %}
+                    {% if client.logoPath|default %}
+                        <img src="{{ asset(client.logoPath) }}" alt="{{ client.name }}" loading="lazy">
+                    {% else %}
+                        <span class="client-name">{{ client.name }}</span>
+                    {% endif %}
+                    {% if client.website|default %}
+                        </a>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
